@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIVA+</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhax1scBfdvvcGdL5C0xslrFNNEyF32Fw&libraries=places" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="viva+.jpeg" alt="Logo VIVA+" class="logo">
+            <div class="accessibility-toolbar" aria-label="Ferramentas de acessibilidade">
+                <button id="toggle-font" title="Aumentar fonte">A+</button>
+                <button id="toggle-tts" title="Leitura de tela">🔈</button>
+                <button id="toggle-contrast" title="Alto contraste">◑</button>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="sidebar">
+                <div class="location-info">
+                    <h2>Sua Localização</h2>
+                    <button id="get-location">Obter Localização</button>
+                    <p id="location-status">Clique no botão acima para compartilhar sua localização</p>
+                </div>
+                
+                <div class="places-filter">
+                    <h2>Encontrar Locais</h2>
+                    <div class="filter-options">
+                        <button class="filter-btn" data-type="hospital">Hospitais</button>
+                        <button class="filter-btn" data-type="farmacia">Farmácias</button>
+                        <button class="filter-btn" data-type="delegacia">Delegacias</button>
+                    </div>
+                </div>
+                
+                <div class="places-list">
+                    <h2>Locais Encontrados</h2>
+                    <ul id="places-results">
+                        <!-- Resultados serão adicionados aqui via JavaScript -->
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="map"></div>
+        </div>
+    </main>
+    
+    <div class="emergency-button" id="emergencyButton">
+        <i class="phone-icon">📞</i>
+    </div>
+    
+    <div class="emergency-popup" id="emergencyPopup">
+        <div class="popup-content">
+            <h3>Serviços de Emergência</h3>
+            <ul>
+                <li><a href="tel:192" class="emergency-call"><strong>SAMU:</strong> 192</a></li>
+                <li><a href="tel:190" class="emergency-call"><strong>Polícia Militar:</strong> 190</a></li>
+                <li><a href="tel:193" class="emergency-call"><strong>Bombeiros:</strong> 193</a></li>
+            </ul>
+            <button id="closePopup">Fechar</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>VIVA+ — acessível, prático e útil para todas as pessoas</p>
+    </footer>
+</body>
+
+</html>
+
