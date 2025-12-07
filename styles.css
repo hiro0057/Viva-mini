@@ -1,10 +1,13 @@
 :root {
-    --bg: #ffffff;
-    --text: #0f172a;
-    --muted: #667085;
-    --primary: #1E88E5;
-    --surface: #f5f7fb;
-    --danger: #e74c3c;
+    --page-bg: #F5F7FA;
+    --header-bg: #E0E8F9;
+    --panel-bg: #FFFFFF;
+    --text: #1A1A1A;
+    --muted: #6B7280;
+    --primary: #1E73FF;
+    --primary-hover: #1E90FF;
+    --border: #D1D5DB;
+    --icon: #1A1A1A;
     --shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
 }
 
@@ -43,10 +46,12 @@
 
 /* Estilos para navegação em tempo real */
 .route-info-panel {
-    background-color: white;
+    background-color: var(--panel-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow);
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -64,31 +69,32 @@
 
 .nav-button {
     padding: 8px 12px;
-    border-radius: 4px;
-    border: none;
-    background-color: #f0f0f0;
-    color: #333;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background-color: var(--panel-bg);
+    color: var(--text);
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.2s;
 }
 
 .nav-button:hover {
-    background-color: #e0e0e0;
+    background-color: var(--header-bg);
 }
 
 .nav-button.primary {
-    background-color: #4285F4;
-    color: white;
+    background-color: var(--primary);
+    border-color: transparent;
+    color: #FFFFFF;
 }
 
 .nav-button.primary:hover {
-    background-color: #3367d6;
+    background-color: var(--primary-hover);
 }
 
 .nav-button.danger {
-    background-color: #f44336;
-    color: white;
+    background-color: var(--primary);
+    color: #FFFFFF;
 }
 
 .nav-button.danger:hover {
@@ -134,9 +140,11 @@
     bottom: 20px;
     left: 20px;
     z-index: 1000;
-    background-color: white;
+    background-color: var(--panel-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow);
     width: calc(100% - 40px);
     max-width: 400px;
     overflow: hidden;
@@ -147,17 +155,19 @@
     top: 20px;
     right: 20px;
     z-index: 1000;
-    background-color: white;
+    background-color: var(--panel-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow);
     width: calc(100% - 40px);
     max-width: 400px;
     overflow: hidden;
 }
 
 .navigation-header {
-    background-color: #4285F4;
-    color: white;
+    background-color: var(--primary);
+    color: #FFFFFF;
     padding: 10px 15px;
     display: flex;
     justify-content: space-between;
@@ -373,17 +383,22 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: var(--surface);
+    background-color: var(--page-bg);
     color: var(--text);
 }
 
 header {
-    background-color: var(--bg);
+    background-color: var(--header-bg);
     color: var(--text);
-    min-height: 100px;
-    display: grid;
-    place-items: center;
+    height: 70px !important;
+    min-height: 0 !important;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
+    overflow: visible;
+    z-index: 10;
     box-shadow: var(--shadow);
 }
 
@@ -393,12 +408,18 @@ header {
     justify-content: center;
     max-width: 1200px;
     width: 100%;
+    padding: 0 !important;
+    line-height: normal;
 }
 
-.logo {
-    max-height: 64px;
-    height: auto;
-    width: auto;
+header img.logo {
+    height: 84px !important;
+    max-height: 84px !important;
+    width: auto !important;
+    display: block;
+    object-fit: contain;
+    z-index: 20;
+    margin-top: -7px;
     border-radius: 8px;
 }
 
@@ -413,6 +434,17 @@ header {
     right: 12px;
     display: flex;
     gap: 8px;
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 56px !important;
+    }
+    header img.logo {
+        height: 56px !important;
+        max-height: 56px !important;
+        margin-top: 0 !important;
+    }
 }
 
 .accessibility-toolbar button {
@@ -438,7 +470,8 @@ main {
 
 .sidebar {
     flex: 0 0 300px;
-    background-color: var(--bg);
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 1rem;
     box-shadow: var(--shadow);
@@ -450,7 +483,6 @@ main {
     border-radius: 16px;
     box-shadow: var(--shadow);
     min-height: 400px;
-    background: var(--bg);
 }
 
 .location-info, .places-filter, .places-list {
@@ -465,7 +497,7 @@ h2 {
 
 button {
     cursor: pointer;
-    border: none;
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 0.6rem 1rem;
     font-weight: 600;
@@ -474,13 +506,14 @@ button {
 
 #get-location {
     background-color: var(--primary);
-    color: white;
+    color: #FFFFFF;
+    border-color: transparent;
     width: 100%;
     margin-bottom: 0.5rem;
 }
 
 #get-location:hover {
-    opacity: 0.9;
+    background-color: var(--primary-hover);
 }
 
 #location-status {
@@ -495,18 +528,19 @@ button {
 }
 
 .filter-btn {
-    background-color: #eef4ff;
-    color: #0b3b67;
+    background-color: var(--header-bg);
+    color: var(--text);
     font-size: 0.9rem;
 }
 
 .filter-btn:hover {
-    filter: brightness(0.95);
+    background-color: var(--primary);
+    color: #FFFFFF;
 }
 
 .filter-btn.active {
     background-color: var(--primary);
-    color: white;
+    color: #FFFFFF;
 }
 
 #places-results {
@@ -534,8 +568,9 @@ button {
 }
 
 footer {
-    background-color: var(--bg);
+    background-color: var(--panel-bg);
     color: var(--muted);
+    border-top: 1px solid var(--border);
     text-align: center;
     padding: 1rem;
     margin-top: auto;
@@ -548,7 +583,7 @@ footer {
     right: 20px;
     width: 60px;
     height: 60px;
-    background-color: var(--danger);
+    background-color: var(--primary);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -565,7 +600,7 @@ footer {
 
 .phone-icon {
     font-size: 30px;
-    color: white;
+    color: #FFFFFF;
 }
 
 /* Pop-up de emergência */
@@ -574,7 +609,8 @@ footer {
     position: fixed;
     bottom: 90px;
     right: 20px;
-    background-color: var(--bg);
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border);
     border-radius: 16px;
     box-shadow: var(--shadow);
     z-index: 1001;
@@ -587,8 +623,8 @@ footer {
 
 .popup-content h3 {
     margin-top: 0;
-    color: var(--danger);
-    border-bottom: 1px solid #eee;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
     padding-bottom: 10px;
 }
 
@@ -599,37 +635,37 @@ footer {
 
 .popup-content li {
     padding: 8px 0;
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid var(--border);
 }
 
 .emergency-call {
     display: block;
     text-decoration: none;
-    color: #333;
+    color: var(--text);
     padding: 5px;
     border-radius: 5px;
     transition: all 0.3s ease;
 }
 
 .emergency-call:hover {
-    background-color: #f8d7da;
-    color: #721c24;
+    background-color: var(--header-bg);
+    color: var(--text);
     padding-left: 10px;
 }
 
 #closePopup {
-    background-color: var(--danger);
-    color: white;
+    background-color: var(--primary);
+    color: #FFFFFF;
     border: none;
     padding: 8px 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     margin-top: 10px;
     width: 100%;
 }
 
 #closePopup:hover {
-    opacity: 0.9;
+    background-color: var(--primary-hover);
 }
 
 body.font-large {
